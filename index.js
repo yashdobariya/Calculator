@@ -5,11 +5,24 @@ let keies;
 const getSign = (event) => {
     key = event.target.value;
     console.log(key);
-    if (key === "=") {
-        console.log("barabar")
-        addition()
-    } else {
-        keys.push(parseInt(key))
+    if (key == "x" || key == "-" || key == "+" || key == "/" || key ==  "C") {
+        // console.log(key);
+        // console.log(typeof(key));
+        keys.push(key)
+        // console.log("run")
+        // console.log(keys.push(typeof(parseInt(key))));
+
+    } else if (key == "=") {
+        // keys.push(key)
+    console.log("barabar")
+
+    addition()
+    }
+    else {
+        // console.log(key);
+        keys.push(key)
+        // console.log(typeof(key));
+        // console.log("run")
     }
     // console.log(keys);
     calculatorDisplay()
@@ -22,9 +35,9 @@ const calculatorDisplay = () => {
 }
 
 const addition = () => {
-    let data = keies.split("+")
-    console.log(data);
-    let add = data.reduce((a, b) => a + b);
+    let addItem = keies.split("+").map(x=>+x)
+    console.log(typeof(data[0]));
+    let add = addItem.reduce((a, b) => a + b);
     console.log(add);
     keys = []
     keys.push(add)

@@ -1,89 +1,117 @@
 let key;
-let storeKeys = [];
 let displayValue;
+let display = document.getElementById("calculator_display");
 
+enterValue = () => {
+    displayValue = display.value
+    console.log(displayValue);
+}
 
 const pressValue = (value) => {
     key = value;
+    
     if (key == "" || key == "+" || key == "-" || key == "/" || key == "x") {
         if (displayValue.includes("x")) {
-            multiplication()
+            console.log(displayValue);
+            let checkMulItems = displayValue.split("x")
+            if (!checkMulItems[1] == "") {
+                multiplication()
+                console.log("call");
+            }
         }
         else if (displayValue.includes("-")) {
-            subtraction()
+            let checkSubItems = displayValue.split("-")
+            if (!checkSubItems[1] == "") {
+                    console.log("call");
+                subtraction()
+                }
         }
         else if (displayValue.includes("+")) {
-            addition()
+            let checkAddItems = displayValue.split("+")
+            if (!checkAddItems[1] == "") {
+                    console.log("call");
+                addition()
+            }
         }
         else if (displayValue.includes("/")) {
-            division()
+            console.log(displayValue);
+            let checkDivItems = displayValue.split("/")
+            console.log(checkDivItems);
+            if (!checkDivItems[1] == "") {
+                    console.log("call");
+                division()
+                }
         }
     }
-    storeKeys.push(key);
+    console.log(displayValue);
     calculatorDisplay()
 }
 
 const calculatorDisplay = () => {
     if (key == "C") {
-        console.log(key);
-        storeKeys = [];
+        key = ""
+        displayValue = ""
     }
-    displayValue = storeKeys.join("");
-    console.log(displayValue);
-    console.log(key);    
-    let display = document.getElementById("calculator_display");
-    display.value = displayValue;
+    if (displayValue == null) {
+        displayValue = ""
+    }
+    displayValue = displayValue + key
+    // console.log(displayValue.toString());
+    // console.log(displayValue);
+    // console.log(lastSign);
+    let lastSign = displayValue.slice(-1)
+    if (lastSign == key) {
+        console.log("call");
+        console.log(displayValue.length);
+        console.log(lastSign);
+        let data =  displayValue.slice(-1) + key
+        console.log(data);
+        display.value = displayValue; 
+    }
+    display.value = displayValue; 
 }
-
 
 
 const addition = () => {
     console.log(displayValue);
     let addItem = displayValue.split("+").map(x => +x);
+    console.log(addItem);
     let add = addItem.reduce((a, b) => a + b);
-    storeKeys = [];
-    storeKeys.push(add);
-    console.log(storeKeys);
-    console.log("addtion");
+        displayValue = ""
+        displayValue = add
+        console.log("addtion");
+        
 }
 
 const subtraction = () => {
     let subItem = displayValue.split("-").map(x => +x);
     let sub = subItem.reduce((a, b) => a - b);
-    storeKeys = [];
-    storeKeys.push(sub);
+    displayValue = "";
+    displayValue = sub;
     console.log("subtraction");
     
 }
 const multiplication = () => {
-    console.log(displayValue);
+    // console.log(displayValue);
+    // let lastSign = displayValue.slice(-1)
+    // console.log(lastSign);
+    // if (lastSign == "x" && key == "-") {
+    //    let data =  displayValue.replace(lastSign, key)
+    //     console.log(data);
+    // }
     let mulItem = displayValue.split("x").map(x => +x);
-    console.log(mulItem);
     let mul = mulItem.reduce((a, b) => a * b);
-    console.log(mul);
-    storeKeys = [];
-    storeKeys.push(mul);
+    displayValue = "";
+    displayValue = mul;
+    console.log(displayValue);
     console.log("multiplication");
     
 }
 const division = () => {
     let divItem = displayValue.split("/").map(x => +x);
     let divided = divItem.reduce((a, b) => a / b);
-    storeKeys = [];
-    storeKeys.push(divided);
+    displayValue = "";
+    displayValue = divided;
     console.log("division");
     
 }
-
-    // let lastSign = displayValue.slice(-1)
-    // console.log(lastSign);
-    // if (lastSign == "x" && key == "-") {
-    //     console.log(key);
-    //     console.log(displayValue);
-    //     console.log(typeof (displayValue));
-    //     console.log(lastSign);
-    //     console.log(key);
-    //     displayValue.replace(lastSign, key)
-    //     console.log("minus");
-    //     console.log(displayValue);
-    //     }

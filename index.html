@@ -18,7 +18,7 @@
             <div class="klc_sec">
                 <div class="header">
                     <h1>KLC</h1>
-                    <input type="text" id="calculator_display" value="" disabled>
+                    <input type="text" id="calculator_display" oninput="enterValue()">
                 </div>
 
                 <div class="btn_wrap">
@@ -33,7 +33,7 @@
                     <button class="btn" onclick="pressValue(1)">1</button>
                     <button class="btn" onclick="pressValue(2)">2</button>
                     <button class="btn" onclick="pressValue(3)">3</button>
-                    <button class="btn" onclick="pressValue(`x`)">x</button>
+                    <button class="btn" onclick="pressValue('x')">x</button>
                     <button class="btn" onclick="pressValue(`C`)">C</button>
                     <button class="btn" onclick="pressValue(0)">0</button>
                     <button class="btn" onclick="pressValue(``)">=</button>

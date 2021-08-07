@@ -26,26 +26,40 @@ const pressValue = (value) => {
         displayValue = displayValue.substring(0, displayValue.length - 1);
       }
     }
-    if (displayValue.includes("x")) {
-      let checkMulItems = displayValue.split("x");
-      if (!checkMulItems[1] == "") {
-        multiplication();
-      }
-    } else if (displayValue.includes("-")) {
-      let checkSubItems = displayValue.split("-");
-      if (!checkSubItems[1] == "") {
-        subtraction();
-      }
-    } else if (displayValue.includes("+")) {
-      let checkAddItems = displayValue.split("+");
-      if (!checkAddItems[1] == "") {
-        addition();
-      }
-    } else if (displayValue.includes("/")) {
-      let checkDivItems = displayValue.split("/");
-      if (!checkDivItems[1] == "") {
-        division();
-      }
+
+    const sign = displayValue.includes("x")
+      ? "x"
+      : displayValue.includes("+")
+      ? "+"
+      : displayValue.includes("-")
+      ? "-"
+      : "/";
+
+    switch (sign) {
+      case "x":
+        let checkMulItems = displayValue.split("x");
+        if (!checkMulItems[1] == "") {
+          multiplication();
+        }
+        break;
+      case "-":
+        let checkSubItems = displayValue.split("-");
+        if (!checkSubItems[1] == "") {
+          subtraction();
+        }
+        break;
+      case "+":
+        let checkAddItems = displayValue.split("+");
+        if (!checkAddItems[1] == "") {
+          addition();
+        }
+        break;
+      case "/":
+        let checkDivItems = displayValue.split("/");
+        if (!checkDivItems[1] == "") {
+          division();
+        }
+        break;
     }
   }
   calculatorDisplay();

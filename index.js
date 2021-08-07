@@ -9,67 +9,54 @@ enterValue = () => {
 const pressValue = (value) => {
   operator = value;
   if (
-    operator == "=" ||
+    operator === "=" ||
     operator == "+" ||
-    operator == "-" ||
-    operator == "/" ||
-    operator == "x"
+    operator === "-" ||
+    operator === "/" ||
+    operator === "x"
   ) {
     if (displayValue.length >= 1) {
       let lastSign = displayValue.slice(-1);
       if (
-        lastSign == "x" ||
-        lastSign == "-" ||
-        lastSign == "+" ||
-        lastSign == "/"
+        lastSign === "x" ||
+        lastSign === "-" ||
+        lastSign === "+" ||
+        lastSign === "/"
       ) {
         displayValue = displayValue.substring(0, displayValue.length - 1);
       }
     }
 
-    const sign = displayValue.includes("x")
-      ? "x"
-      : displayValue.includes("+")
-      ? "+"
-      : displayValue.includes("-")
-      ? "-"
-      : "/";
-
-    switch (sign) {
-      case "x":
-        let checkMulItems = displayValue.split("x");
-        if (!checkMulItems[1] == "") {
-          multiplication();
-        }
-        break;
-      case "-":
-        let checkSubItems = displayValue.split("-");
-        if (!checkSubItems[1] == "") {
-          subtraction();
-        }
-        break;
-      case "+":
-        let checkAddItems = displayValue.split("+");
-        if (!checkAddItems[1] == "") {
-          addition();
-        }
-        break;
-      case "/":
-        let checkDivItems = displayValue.split("/");
-        if (!checkDivItems[1] == "") {
-          division();
-        }
-        break;
+    if (displayValue.includes("x")) {
+      let checkMulItems = displayValue.split("x");
+      if (checkMulItems[1] != "") {
+        multiplication();
+      }
+    } else if (displayValue.includes("-")) {
+      let checkSubItems = displayValue.split("-");
+      if (checkSubItems[1] != "") {
+        subtraction();
+      }
+    } else if (displayValue.includes("+")) {
+      let checkAddItems = displayValue.split("+");
+      if (checkAddItems[1] != "") {
+        addition();
+      }
+    } else if (displayValue.includes("/")) {
+      let checkDivItems = displayValue.split("/");
+      if (checkDivItems[1] != "") {
+        division();
+      }
     }
   }
   calculatorDisplay();
 };
 
 const calculatorDisplay = () => {
-  if (operator == "C") {
+  if (operator === "C") {
     operator = "";
     displayValue = "";
-  } else if (operator == "=") {
+  } else if (operator === "=") {
     operator = "";
   }
   if (displayValue == null) {
